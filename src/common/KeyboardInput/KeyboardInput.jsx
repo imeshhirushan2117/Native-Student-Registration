@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextInput } from 'react-native-paper';
 
-export default function KeyboardInput({value,label,onChangeText,style}) {
+export default function KeyboardInput({value,label,onChangeText,style,secureTextEntry}) {
 
   return (
     <TextInput
@@ -13,6 +13,7 @@ export default function KeyboardInput({value,label,onChangeText,style}) {
     activeOutlineColor="#0B6FB8"
     outlineColor="#2c3e50"
     textColor="#2c3e50"
+    secureTextEntry = {secureTextEntry } 
     style={style}
   />
   )
