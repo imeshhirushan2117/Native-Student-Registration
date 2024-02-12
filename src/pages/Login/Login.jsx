@@ -25,7 +25,7 @@ export default function LoginPage() {
   return (
     <View style={styles.mainView}>
       <View>
-        <Text style={styles.text} variant="displaySmall">Student Registation System !</Text>
+        <Text style={styles.text} variant="headlineSmall">User Login!</Text>
       </View>
       <View style={styles.view}>
         <Image style={styles.img} source={user_icon} />
