@@ -32,7 +32,7 @@ export default function Activity() {
     return (
         <View style={{ padding: 20, flex: 1 }}>
             <ScrollView>
-            <Text style={{textAlign:'center'}} variant="titleLarge">Register Student!</Text>
+                <Text style={{ textAlign: 'center' }} variant="titleLarge">Register Student!</Text>
                 <View style={{ alignItems: 'center', flex: 1, marginTop: 100 }}>
                     <Image source={student_icon} />
                 </View>
@@ -99,8 +99,6 @@ export default function Activity() {
                         rippleColor={"#D57B71"}
                         onPress={deleted}
                         style={styles.btn}
-
-
                     />
 
                     <MyButton
