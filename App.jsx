@@ -7,8 +7,8 @@ import ReadData from './src/pages/ReadData/ReadData'
 export default function App() {
   return (
   //  <Login/>
-    // <Register/>
+    <Register/>
     //  <Activity/>
-     <ReadData/>
+    //  <ReadData/>
   )
 }

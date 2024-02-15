@@ -5,7 +5,7 @@ import register_icon from '../../assets/icons/register.png';
 import KeyboardInput from '../../common/KeyboardInput/KeyboardInput';
 import { Text } from 'react-native-paper';
 import MyButton from '../../common/Button/Button';
-
+import instance from '../../services/Axious';
 
 export default function Register() {
 
@@ -13,11 +13,26 @@ export default function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const logIn = () => {
-        console.log(name);
-        console.log(email);
-        console.log(password);
-        clear()
+
+
+    
+
+
+    const register = () => {
+        instance.post('/register', {
+            name: name,
+            email: email,
+            password: password,
+          })
+          .then(function (response) {
+            console.log(response.data);
+            console.log("Save Seccess");
+            clear()
+        })
+        .catch(function (error) {
+            console.log(error);
+            console.log("Save Un Seccess");
+        });
     }
 
     const clear = () => {
@@ -66,11 +81,11 @@ export default function Register() {
             <View style={styles.btn}>
                 <MyButton
                     style={styles.myBtn}
-                    text={"LogIn"}
+                    text={"Register"}
                     textColor={"black"}
                     buttonColor={"#1F87C7"}
                     rippleColor={"white"}
-                    onPress={logIn}
+                    onPress={register}
 
                 />
 
