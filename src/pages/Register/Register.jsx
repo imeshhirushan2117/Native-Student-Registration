@@ -7,6 +7,7 @@ import { Text } from 'react-native-paper';
 import MyButton from '../../common/Button/Button';
 import instance from '../../services/Axious';
 
+
 export default function Register() {
 
     const [name, setName] = useState("");
@@ -14,25 +15,22 @@ export default function Register() {
     const [password, setPassword] = useState("");
 
 
-
-    
-
-
     const register = () => {
         instance.post('/register', {
             name: name,
             email: email,
             password: password,
-          })
-          .then(function (response) {
-            console.log(response.data);
-            console.log("Save Seccess");
-            clear()
         })
-        .catch(function (error) {
-            console.log(error);
-            console.log("Save Un Seccess");
-        });
+            .then(function (response) {
+                console.log(response.data);
+                console.log("Save Seccess");
+
+                clear()
+            })
+            .catch(function (error) {
+                console.log(error);
+                console.log("Save Un Seccess");
+            });
     }
 
     const clear = () => {
@@ -42,7 +40,7 @@ export default function Register() {
     }
 
     const back = () => {
-      console.log("Back");
+      console.log("back"); 
     }
 
     return (
@@ -86,7 +84,7 @@ export default function Register() {
                     buttonColor={"#1F87C7"}
                     rippleColor={"white"}
                     onPress={register}
-
+        
                 />
 
 
@@ -106,8 +104,9 @@ export default function Register() {
                     buttonColor={"#2c3e50"}
                     rippleColor={"white"}
                     onPress={back}
-                />
 
+                />
+               
             </View>
         </View>
     )
