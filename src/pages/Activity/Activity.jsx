@@ -16,12 +16,8 @@ export default function Activity() {
         console.log("Save");
     }
 
-    const update = () => {
-        console.log("Update");
-    }
-
-    const deleted = () => {
-        console.log("Deleted");
+    const read = () => {
+        console.log("Read");
     }
 
     const clear = () => {
@@ -79,36 +75,28 @@ export default function Activity() {
 
 
                     />
-
-                    <MyButton
-                        text={"Update"}
-                        buttonColor={'#16a085'}
-                        textColor={'white'}
-                        rippleColor={"#63BFAD"}
-                        onPress={update}
-                        style={styles.btn}
-                    />
-                </View>
-
-
-                <View style={{ flex: 2, marginTop: 15, flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <MyButton
-                        text={"Deleted"}
-                        buttonColor={'#c0392b'}
-                        textColor={'white'}
-                        rippleColor={"#D57B71"}
-                        onPress={deleted}
-                        style={styles.btn}
-                    />
-
-                    <MyButton
+                       <MyButton
                         text={"Clear"}
                         buttonColor={'#f39c12'}
                         textColor={'white'}
                         rippleColor={"#F7BD61"}
                         onPress={clear}
                         style={styles.btn}
-                    />
+                    /> 
+
+                  
+                </View>
+
+                <View style={{ flex: 2, marginTop: 15, flexDirection: 'row', justifyContent: 'space-between' }}>
+                   
+                <MyButton
+                        text={"Read"}
+                        buttonColor={'#16a085'}
+                        textColor={'white'}
+                        rippleColor={"#B1DFD6"}
+                        onPress={read}
+                        style={styles.btn1} 
+                />
                 </View>
             </ScrollView>
         </View>
@@ -121,5 +109,10 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         width: "48%"
 
-    }
+    },
+
+    btn1 : {
+        borderRadius: 8,
+        width: "100%"
+    },
 })
