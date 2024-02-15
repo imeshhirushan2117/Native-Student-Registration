@@ -3,15 +3,15 @@ import { StyleSheet, View } from 'react-native'
 import { Card, Text } from 'react-native-paper';
 import MyButton from '../../common/Button/Button'
 
-export default function CardComponent({update,deleted , name, age, address, contact }) {
+export default function CardComponent({onPressUpdate,onPressDeleted , name, age, address, contact }) {
 
     return (
         <View style={{ padding: 20, flex: 1 }}>
-            <Card style={{ padding: 10 }}>
+            <Card style={{ padding: 15,backgroundColor:'#16a085' }}>
 
-                <Card.Content>
-                    <Text style={{ marginBottom: 40 }} variant="headlineSmall">Student Card</Text>
-                </Card.Content>
+                <View>
+                    <Text style={{ fontWeight:'bold', color:'#0a3d62' , marginBottom: 20, textAlign:'center'}} variant="headlineSmall">Student Card !</Text>
+                </View>
 
                 <View>
                     <Text style={styles.txt} variant="bodyLarge">Name : {name}</Text>
@@ -23,10 +23,10 @@ export default function CardComponent({update,deleted , name, age, address, cont
                 <View style={{ marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <MyButton
                         text={"Update"}
-                        buttonColor={'#16a085'}
+                        buttonColor={'#34495e'}
                         textColor={'white'}
-                        rippleColor={"#63BFAD"}
-                        onPress={update}
+                        rippleColor={"#BBC2C9"}
+                        onPress={onPressUpdate}
                         style={styles.btn}
                     />
 
@@ -36,7 +36,7 @@ export default function CardComponent({update,deleted , name, age, address, cont
                         buttonColor={'#c0392b'}
                         textColor={'white'}
                         rippleColor={"#D57B71"}
-                        onPress={deleted}
+                        onPress={onPressDeleted}
                         style={styles.btn}
                     />
                 </View>
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
 
     txt: {
         fontWeight: '900',
-        paddingBottom: 5
+        paddingBottom: 5,
+        color:'black'
     },
 })
