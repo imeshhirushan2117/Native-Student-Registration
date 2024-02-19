@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import { Image } from 'react-native';
 import register_icon from '../../assets/icons/register.png';
@@ -8,7 +8,7 @@ import MyButton from '../../common/Button/Button';
 import instance from '../../services/Axious';
 
 
-export default function Register() {
+export default function Register({navigation}) {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -23,13 +23,13 @@ export default function Register() {
         })
             .then(function (response) {
                 console.log(response.data);
-                console.log("Save Seccess");
-
+                console.log("Register Seccess!");
+                navigation.navigate('Login')
                 clear()
             })
             .catch(function (error) {
                 console.log(error);
-                console.log("Save Un Seccess");
+                console.log("Register Un Seccess!");
             });
     }
 
@@ -39,12 +39,13 @@ export default function Register() {
         setPassword('');
     }
 
-    const back = () => {
-      console.log("back"); 
-    }
+    // const back = () => {
+    //   console.log("back"); 
+    // }
 
     return (
-        <View style={styles.mainView}>
+        <ScrollView>
+                    <View style={styles.mainView}>
             <View>
                 <Text style={styles.text} variant="headlineSmall">User Registation!</Text>
             </View>
@@ -97,18 +98,19 @@ export default function Register() {
                     onPress={clear}
                 />
 
-                <MyButton
+                {/* <MyButton
                     style={styles.myBtn}
                     text={"Back"}
                     textColor={"white"}
                     buttonColor={"#2c3e50"}
                     rippleColor={"white"}
                     onPress={back}
-
-                />
+                /> */}
                
             </View>
         </View>
+        </ScrollView>
+
     )
 }
 

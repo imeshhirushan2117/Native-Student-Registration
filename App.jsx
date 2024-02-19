@@ -9,13 +9,12 @@ import DialogBox from './src/component/DialogBox/DialogBox'
 export default function App() {
 
   return (
-  //  <Login/>
+   <Login/>
     // <Register/>
     //  <Activity/>
     //  <ReadData/>
       // <Alerat/>
-      // <UpdateForm/>
-       <DialogBox/>
+      //  <DialogBox/>
 
   )
 }

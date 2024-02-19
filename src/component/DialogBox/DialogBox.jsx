@@ -14,6 +14,7 @@ export default function DialogBox() {
         <PaperProvider>
             <View>
                 <Button onPress={showDialog}>Show Dialog</Button>
+             
                 <Portal>
                     <Dialog visible={visible} onDismiss={hideDialog}>
                         <Dialog.Title>Update Student !</Dialog.Title>
@@ -48,18 +49,18 @@ export default function DialogBox() {
                                 buttonColor={'#16a085'}
                                 textColor={'white'}
                                 rippleColor={"#B1DFD6"}
-                                onPress={hideDialog}
+                                onPress={()=> console.log("Update")}
                                 style={styles.btn}
                             />
 
-                            <MyButton
+                            {/* <MyButton
                                 text={"Cansel"}
                                 buttonColor={'#c0392b'}
                                 textColor={'white'}
                                 rippleColor={"#EABDB8"}
                                 onPress={hideDialog}
                                 style={styles.btn}
-                            />
+                            /> */}
                         </View>
                     </Dialog>
                 </Portal>

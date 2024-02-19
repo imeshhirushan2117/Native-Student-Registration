@@ -2,8 +2,12 @@ import { View, Text } from 'react-native'
 import React, { useEffect ,useState } from 'react'
 import Card from '../../component/Card/Card'
 import instance from '../../services/Axious'
-
+import DialogBox from '../../component/DialogBox/DialogBox'
 export default function ReadData() {
+
+    const [visible, setVisible] = React.useState(false);
+    const showDialog = () => setVisible(true);
+   const hideDialog = () => setVisible(false);
 
     const [data, setData] = useState([])
 
@@ -25,7 +29,8 @@ export default function ReadData() {
     }
 
     const update = () =>{
-        console.log("Update")
+        setVisible(true)
+      
     }
 
     const deleted = () =>{

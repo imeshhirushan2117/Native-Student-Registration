@@ -1,11 +1,12 @@
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet,ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import { Image } from 'react-native';
 import user_icon from '../../assets/icons/user.png';
 import KeyboardInput from '../../common/KeyboardInput/KeyboardInput';
 import { Text } from 'react-native-paper';
 import MyButton from '../../common/Button/Button';
-
+import instance from '../../services/Axious';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function LoginPage() {
 
@@ -13,17 +14,33 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
 
   const logIn = () => {
-    console.log(password);
+    instance.post('/login', {
+      email: email,
+      password: password,
+  })
+      .then(function  (response) {
+        storeData(response)
+          console.log("LogIn Seccess");
+      })
+      .catch(function (error) {
+          console.log(error);
+          // console.log("LogIn Un Seccess");
+      });
   }
 
+  const storeData = async (response) => {
+    try {
+      await AsyncStorage.setItem('my-key', response.data.token);
+      console.log(response.data.token);
+    } catch (e) {
+    }
+  };
   const register = () => {
-    console.log("Register");
-    console.log(email);
-    console.log(password);
   }
 
   return (
-    <View style={styles.mainView}>
+<ScrollView>
+<View style={styles.mainView}>
       <View>
         <Text style={styles.text} variant="headlineSmall">User Login!</Text>
       </View>
@@ -70,6 +87,9 @@ export default function LoginPage() {
         />
       </View>
     </View>
+</ScrollView>
+
+   
   )
 }
 
