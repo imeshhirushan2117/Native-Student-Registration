@@ -5,7 +5,7 @@ import KeyboardInput from '../../common/KeyboardInput/KeyboardInput';
 import MyButton from '../../common/Button/Button';
 import { Text } from 'react-native-paper';
 
-export default function Activity() {
+export default function Activity({navigation}) {
 
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
@@ -17,7 +17,7 @@ export default function Activity() {
     }
 
     const read = () => {
-        console.log("Read");
+        navigation.navigate('ReadData')
     }
 
     const clear = () => {

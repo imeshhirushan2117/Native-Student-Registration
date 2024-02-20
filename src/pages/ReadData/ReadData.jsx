@@ -5,9 +5,6 @@ import instance from '../../services/Axious'
 import DialogBox from '../../component/DialogBox/DialogBox'
 export default function ReadData() {
 
-    const [visible, setVisible] = React.useState(false);
-    const showDialog = () => setVisible(true);
-   const hideDialog = () => setVisible(false);
 
     const [data, setData] = useState([])
 
@@ -28,8 +25,10 @@ export default function ReadData() {
             });
     }
 
+
+
     const update = () =>{
-        setVisible(true)
+      console.log("update");
       
     }
 

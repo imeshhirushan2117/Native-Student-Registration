@@ -4,7 +4,7 @@ import { Button, Dialog, Portal, PaperProvider, Text } from 'react-native-paper'
 import KeyboardInput from '../../common/KeyboardInput/KeyboardInput';
 import MyButton from '../../common/Button/Button';
 
-export default function DialogBox() {
+export default function DialogBox({onPress}) {
 
     const [visible, setVisible] = React.useState(false);
     const showDialog = () => setVisible(true);
@@ -49,7 +49,7 @@ export default function DialogBox() {
                                 buttonColor={'#16a085'}
                                 textColor={'white'}
                                 rippleColor={"#B1DFD6"}
-                                onPress={()=> console.log("Update")}
+                                onPress={onPress}
                                 style={styles.btn}
                             />
 

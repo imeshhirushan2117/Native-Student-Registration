@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyleSheet, View } from 'react-native'
 import { Card, Text } from 'react-native-paper';
 import MyButton from '../../common/Button/Button'
-
+import DialogBox from '../DialogBox/DialogBox';
 export default function CardComponent({onPressUpdate,onPressDeleted , name, age, address, contact }) {
 
     return (

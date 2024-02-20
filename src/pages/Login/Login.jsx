@@ -21,6 +21,7 @@ export default function LoginPage({navigation}) {
       .then(function  (response) {
         storeData(response)
           console.log("LogIn Seccess");
+          navigation.navigate('Activity')
       })
       .catch(function (error) {
           console.log(error);
