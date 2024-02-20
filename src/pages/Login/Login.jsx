@@ -8,7 +8,7 @@ import MyButton from '../../common/Button/Button';
 import instance from '../../services/Axious';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function LoginPage() {
+export default function LoginPage({navigation}) {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,6 +36,7 @@ export default function LoginPage() {
     }
   };
   const register = () => {
+    navigation.navigate('Register')
   }
 
   return (
