@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react'
 import Card from '../../component/Card/Card'
 import instance from '../../services/Axious'
 import DialogBox from '../../component/DialogBox/DialogBox'
-import { PaperProvider } from 'react-native-paper'
+import { Button, PaperProvider } from 'react-native-paper'
 export default function ReadData() {
 
     const [data, setData] = useState([])
+    const [visible, setVisible] = useState(false);
 
     useEffect(() => {
         getData()
@@ -41,7 +42,7 @@ export default function ReadData() {
 
 
     const update = () => {
-        console.log("Update")
+        setVisible(true)
     }
 
     const deleted = () => {
@@ -49,7 +50,9 @@ export default function ReadData() {
     }
 
     return (
-        <>
+        <PaperProvider>
+        <DialogBox visible={visible} hideDialog={()=>{setVisible(false)}}/>
+        <View>
             <FlatList
                 data={data}
                 renderItem={({ item }) => (
@@ -62,7 +65,10 @@ export default function ReadData() {
                         onPressUpdate={update}
                     />
                 )}
-            />
-        </>
+            />    
+        </View>
+            
+        </PaperProvider>
+
     )
 }

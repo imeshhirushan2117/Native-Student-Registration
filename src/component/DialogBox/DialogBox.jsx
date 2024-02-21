@@ -5,22 +5,19 @@ import KeyboardInput from '../../common/KeyboardInput/KeyboardInput';
 import MyButton from '../../common/Button/Button';
 
 
-export default function DialogBox() {
+export default function DialogBox({visible=false,hideDialog}) {
 
-    const [visible, setVisible] = React.useState(false);
-    const showDialog = () => setVisible(true);
-    const hideDialog = () => setVisible(false);
+   // const [visible, setVisible] = React.useState(false);
+    //const showDialog = () => setVisible(true);
+    //const hideDialog = () => setVisible(false);
 
     const updateData = () => {
         console.log("updateData");
     }
 
     return (
-        <PaperProvider>
-            <View>
-                <Button onPress={showDialog}>Diolog Button</Button>
-                <Portal>
-                    <Dialog visible={visible} onDismiss={hideDialog}>
+        <Portal>
+            <Dialog visible={visible} onDismiss={hideDialog}>
                         <Dialog.Title>Update Student !</Dialog.Title>
                         <View style={{ padding: 20 }}>
                             <KeyboardInput
@@ -67,11 +64,7 @@ export default function DialogBox() {
                             /> */}
                         </View>
                     </Dialog>
-                </Portal>
-            </View>
-
-        </PaperProvider>
-
+        </Portal>
     );
 };
 
