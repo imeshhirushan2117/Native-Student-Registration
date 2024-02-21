@@ -59,8 +59,6 @@ export default function ReadData() {
 
         console.log("deletedData");
     }
-
-    
     return (
         <PaperProvider>
         <DialogBox visible={visible} hideDialog={()=>{setVisible(false)}}/>
@@ -73,9 +71,8 @@ export default function ReadData() {
                         age={item.age}
                         address={item.address}
                         contact={item.contact}
-                        // onPressDeleted={deleted}
                         onPressDeleted={() => deleted(item.id)}
-                        onPressUpdate={update}
+                        onPressUpdate={() => update(item.id)}
                     />
                 )}
             />    
