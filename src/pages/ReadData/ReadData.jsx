@@ -7,7 +7,6 @@ import { PaperProvider } from 'react-native-paper'
 export default function ReadData() {
 
     const [data, setData] = useState([])
-    const [visible, setVisible] = React.useState(false);
 
     useEffect(() => {
         getData()
@@ -40,11 +39,10 @@ export default function ReadData() {
             })
     }
 
-    const update = () => {
-        // setVisible(true);
-        console.log("update");
-    }
 
+    const update = () => {
+        console.log("Update")
+    }
 
     const deleted = () => {
         console.log("Deleted")
@@ -52,10 +50,9 @@ export default function ReadData() {
 
     return (
         <>
-
             <FlatList
                 data={data}
-                renderItem={({ item }) => (    
+                renderItem={({ item }) => (
                     <Card
                         name={item.name}
                         age={item.age}
@@ -65,14 +62,7 @@ export default function ReadData() {
                         onPressUpdate={update}
                     />
                 )}
-
-                // keyExtractor={item => item.id}
-
-            // <PaperProvider>
-            //     <DialogBox hideDialog={() => { setVisible(false) }} visible={visible} />
-            // </PaperProvider>
             />
-
         </>
     )
 }

@@ -4,19 +4,21 @@ import { Button, Dialog, Portal, PaperProvider, Text } from 'react-native-paper'
 import KeyboardInput from '../../common/KeyboardInput/KeyboardInput';
 import MyButton from '../../common/Button/Button';
 
-export default function DialogBox({visible=false , hideDialog}) {
 
-    //const [visible, setVisible] = React.useState(false);
-    // const showDialog = () => setVisible(true);
-    // const hideDialog = () => setVisible(false);
+export default function DialogBox() {
 
-    // const showDialog = (val) => {
-    //     setVisible(val)
-    // }
+    const [visible, setVisible] = React.useState(false);
+    const showDialog = () => setVisible(true);
+    const hideDialog = () => setVisible(false);
+
+    const updateData = () => {
+        console.log("updateData");
+    }
+
     return (
-       
+        <PaperProvider>
             <View>
-                {/* <Button onPress={showDialog}>Diolog Button</Button> */}
+                <Button onPress={showDialog}>Diolog Button</Button>
                 <Portal>
                     <Dialog visible={visible} onDismiss={hideDialog}>
                         <Dialog.Title>Update Student !</Dialog.Title>
@@ -51,7 +53,7 @@ export default function DialogBox({visible=false , hideDialog}) {
                                 buttonColor={'#16a085'}
                                 textColor={'white'}
                                 rippleColor={"#B1DFD6"}
-                                //onPress={onPress}
+                                onPress={updateData}
                                 style={styles.btn}
                             />
 
@@ -67,7 +69,9 @@ export default function DialogBox({visible=false , hideDialog}) {
                     </Dialog>
                 </Portal>
             </View>
-      
+
+        </PaperProvider>
+
     );
 };
 

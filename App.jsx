@@ -13,22 +13,22 @@ export default function App() {
 
   const Stack = createStackNavigator();
 
-  const [login, setLogin] = useState(false)
+  // const [login, setLogin] = useState(false)
 
-  useEffect(() => {
-    getData()
-  }, [])
+  // useEffect(() => {
+  //   getData()
+  // }, [])
 
-  const getData = async () => {
-    try {
-      const token = await AsyncStorage.getItem('my-key');
-      if (token !== null) {
-        setLogin(true)
-      }
-    } catch (e) {
-      setLogin(false)
-    }
-  };
+  // const getData = async () => {
+  //   try {
+  //     const token = await AsyncStorage.getItem('my-key');
+  //     if (token !== null) {
+  //       setLogin(true)
+  //     }
+  //   } catch (e) {
+  //     setLogin(false)
+  //   }
+  // };
 
 
   return (
@@ -49,21 +49,21 @@ export default function App() {
   //   </Stack.Navigator>
   // </NavigationContainer>
 
-    <NavigationContainer>
-      <Stack.Navigator>
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="Activity" component={Activity} />
-      <Stack.Screen name="ReadData" component={ReadData} />
-    </Stack.Navigator>
-    </NavigationContainer>
+    // <NavigationContainer>
+    //   <Stack.Navigator>
+    //   {/* <Stack.Screen name="Login" component={Login} />
+    //   <Stack.Screen name="Register" component={Register} />
+    //   <Stack.Screen name="Activity" component={Activity} /> */}
+    //   <Stack.Screen name="ReadData" component={ReadData} />
+    // </Stack.Navigator>
+    // </NavigationContainer>
 
 
     // <Register/>
     //  <Activity/>
     //  <ReadData/>
     // <Alerat/>
-    // <DialogBox/>
+    <DialogBox/>
 
   )
 }

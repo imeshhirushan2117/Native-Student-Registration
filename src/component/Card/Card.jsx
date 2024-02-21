@@ -33,7 +33,6 @@ export default function CardComponent({onPressUpdate,onPressDeleted , name, age,
                         style={styles.btn}
                     />
 
-
                     <MyButton
                         text={"Deleted"}
                         buttonColor={'#c0392b'}
@@ -44,7 +43,6 @@ export default function CardComponent({onPressUpdate,onPressDeleted , name, age,
                     />
                 </View>
             </Card>
-        
         </View>
     )
 }
