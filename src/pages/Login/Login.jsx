@@ -32,7 +32,7 @@ export default function LoginPage({navigation}) {
   const storeData = async (response) => {
     try {
       await AsyncStorage.setItem('my-key', response.data.token);
-      console.log(response.data.token);
+      // console.log(response.data.token);
       navigation.navigate('Activity')
     } catch (e) {
     }

@@ -20,12 +20,12 @@ export default function ReadData() {
             url: '/student/getAll',
         })
             .then(function (response) {
-                // response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
-                console.log(response.data);
+                // console.log(response.data);
                 const array = [];
 
                 response.data.forEach(val => {
                     array.push({
+                        id: val.id,
                         name: val.student_name,
                         age: val.student_age,
                         address: val.student_address,
@@ -40,15 +40,27 @@ export default function ReadData() {
             })
     }
 
-
     const update = () => {
         setVisible(true)
     }
 
-    const deleted = () => {
-        console.log("Deleted")
+    const deleted = (id) => {
+        console.log(id);
+        instance.delete('/student/delete/'+ id)
+        .then(response => {
+            // console.log(response)
+            getData()
+          console.log('Deleted Successes');
+        })
+        .catch(error => {
+          console.error(error);
+          console.log('Deleted Un Successes');
+        });
+
+        console.log("deletedData");
     }
 
+    
     return (
         <PaperProvider>
         <DialogBox visible={visible} hideDialog={()=>{setVisible(false)}}/>
@@ -61,7 +73,8 @@ export default function ReadData() {
                         age={item.age}
                         address={item.address}
                         contact={item.contact}
-                        onPressDeleted={deleted}
+                        // onPressDeleted={deleted}
+                        onPressDeleted={() => deleted(item.id)}
                         onPressUpdate={update}
                     />
                 )}

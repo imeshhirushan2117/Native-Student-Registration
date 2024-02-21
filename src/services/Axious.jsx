@@ -17,7 +17,6 @@ instance.interceptors.request.use(
       const token = await AsyncStorage.getItem('my-key');
       cachedToken = token;
       config.headers.Authorization = `Bearer ${cachedToken}`;
-      console.log("Token " + cachedToken);
     } catch (error) {
 
     }
