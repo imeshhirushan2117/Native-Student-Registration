@@ -61,7 +61,10 @@ export default function ReadData() {
     }
     return (
         <PaperProvider>
-        <DialogBox visible={visible} hideDialog={()=>{setVisible(false)}}/>
+        <DialogBox 
+        visible={visible} 
+        hideDialog={()=>{setVisible(false)}} 
+        />
         <View>
             <FlatList
                 data={data}
@@ -72,7 +75,7 @@ export default function ReadData() {
                         address={item.address}
                         contact={item.contact}
                         onPressDeleted={() => deleted(item.id)}
-                        onPressUpdate={() => update(item.id)}
+                        onPressUpdate={update}
                     />
                 )}
             />    
