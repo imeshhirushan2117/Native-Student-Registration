@@ -21,7 +21,7 @@ export default function LoginPage({navigation}) {
       .then(function  (response) {
         storeData(response)
           console.log("LogIn Seccess");
-          navigation.navigate('Activity')
+          
       })
       .catch(function (error) {
           console.log(error);
@@ -33,9 +33,11 @@ export default function LoginPage({navigation}) {
     try {
       await AsyncStorage.setItem('my-key', response.data.token);
       console.log(response.data.token);
+      navigation.navigate('Activity')
     } catch (e) {
     }
   };
+  
   const register = () => {
     navigation.navigate('Register')
   }

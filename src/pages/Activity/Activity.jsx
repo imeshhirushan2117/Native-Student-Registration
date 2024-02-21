@@ -4,6 +4,7 @@ import student_icon from '../../assets/icons/student.png'
 import KeyboardInput from '../../common/KeyboardInput/KeyboardInput';
 import MyButton from '../../common/Button/Button';
 import { Text } from 'react-native-paper';
+import instance from '../../services/Axious';
 
 export default function Activity({navigation}) {
 
@@ -13,7 +14,20 @@ export default function Activity({navigation}) {
     const [contact, setContact] = useState("");
 
     const save = () => {
-        console.log("Save");
+        instance.post('/student/save', {
+            student_name: name,
+            student_age: age,
+            student_address: address,
+            student_contact: contact
+          })
+          .then(function (response) {
+            console.log(response);
+            console.log("Save Seccuss !");
+          })
+          .catch(function (error) {
+            console.log(error);
+            console.log("Save UnSeccuss !");
+          });
     }
 
     const read = () => {

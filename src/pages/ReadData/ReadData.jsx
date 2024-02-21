@@ -1,12 +1,13 @@
-import { View, Text } from 'react-native'
-import React, { useEffect ,useState } from 'react'
+import { View, Text, ScrollView, FlatList } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import Card from '../../component/Card/Card'
 import instance from '../../services/Axious'
 import DialogBox from '../../component/DialogBox/DialogBox'
+import { PaperProvider } from 'react-native-paper'
 export default function ReadData() {
 
-
     const [data, setData] = useState([])
+    const [visible, setVisible] = React.useState(false);
 
     useEffect(() => {
         getData()
@@ -21,27 +22,57 @@ export default function ReadData() {
             .then(function (response) {
                 // response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
                 console.log(response.data);
+                const array = [];
 
-            });
+                response.data.forEach(val => {
+                    array.push({
+                        name: val.student_name,
+                        age: val.student_age,
+                        address: val.student_address,
+                        contact: val.student_contact
+                    })
+                })
+
+                setData(array)
+
+            }).catch(err => {
+                console.log(err);
+            })
+    }
+
+    const update = () => {
+        // setVisible(true);
+        console.log("update");
     }
 
 
-
-    const update = () =>{
-      console.log("update");
-      
-    }
-
-    const deleted = () =>{
+    const deleted = () => {
         console.log("Deleted")
     }
 
     return (
-        <Card name={"Imesh"} 
-        age={"23"} 
-        address={"Panadura"} 
-        contact={"0779201232"} 
-        onPressDeleted={deleted} 
-        onPressUpdate={update}/>
+        <>
+
+            <FlatList
+                data={data}
+                renderItem={({ item }) => (    
+                    <Card
+                        name={item.name}
+                        age={item.age}
+                        address={item.address}
+                        contact={item.contact}
+                        onPressDeleted={deleted}
+                        onPressUpdate={update}
+                    />
+                )}
+
+                // keyExtractor={item => item.id}
+
+            // <PaperProvider>
+            //     <DialogBox hideDialog={() => { setVisible(false) }} visible={visible} />
+            // </PaperProvider>
+            />
+
+        </>
     )
 }
