@@ -49,25 +49,11 @@ export default function App() {
   //   </Stack.Navigator>
   // </NavigationContainer>
 
-    // <NavigationContainer>
-    //   <Stack.Navigator>
-    //     {login ? (
-    //       <Stack.Screen name="Activity" component={Activity} />,
-    //       <Stack.Screen name="ReadData" component={ReadData} />
-    //     ) : (
-
-    //       <Stack.Screen name="Register" component={Register} />,
-    //       <Stack.Screen name="Login" component={Login} />
-      
-    //     )}
-    //   </Stack.Navigator>
-    // </NavigationContainer>
-
     <NavigationContainer>
       <Stack.Navigator>
-      {/* <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="Activity" component={Activity} /> */}
+      <Stack.Screen name="Activity" component={Activity} />
       <Stack.Screen name="ReadData" component={ReadData} />
     </Stack.Navigator>
     </NavigationContainer>

@@ -23,6 +23,7 @@ export default function Activity({navigation}) {
           .then(function (response) {
             console.log(response);
             console.log("Save Seccuss !");
+            clear()
           })
           .catch(function (error) {
             console.log(error);
@@ -35,7 +36,10 @@ export default function Activity({navigation}) {
     }
 
     const clear = () => {
-        console.log("Clear");
+        setName("")
+        setAge("")
+        setAddress("")
+        setContact("")
     }
 
 
