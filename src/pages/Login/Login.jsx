@@ -10,8 +10,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function LoginPage({navigation}) {
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("imesh@gmail.com");
+  const [password, setPassword] = useState("12345");
 
   const logIn = () => {
     instance.post('/login', {
