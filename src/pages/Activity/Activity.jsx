@@ -31,9 +31,9 @@ export default function Activity({navigation}) {
           });
     }
 
-    const read = () => {
-        navigation.navigate('ReadData')
-    }
+    // const read = () => {
+    //     navigation.navigate('ReadData')
+    // }
 
     const clear = () => {
         setName("")
@@ -107,14 +107,14 @@ export default function Activity({navigation}) {
 
                 <View style={{ flex: 2, marginTop: 15, flexDirection: 'row', justifyContent: 'space-between' }}>
                    
-                <MyButton
+                {/* <MyButton
                         text={"Read"}
                         buttonColor={'#16a085'}
                         textColor={'white'}
                         rippleColor={"#B1DFD6"}
                         onPress={read}
                         style={styles.btn1} 
-                />
+                /> */}
                 </View>
             </ScrollView>
         </View>

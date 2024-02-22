@@ -33,7 +33,7 @@ export default function LoginPage({navigation}) {
     try {
       await AsyncStorage.setItem('my-key', response.data.token);
       // console.log(response.data.token);
-      navigation.navigate('Activity')
+      navigation.navigate('DrawerNav')
     } catch (e) {
     }
   };

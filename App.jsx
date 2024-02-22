@@ -8,6 +8,7 @@ import Alerat from './src/common/Alerat/Alerat'
 import DialogBox from './src/component/DialogBox/DialogBox'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import DrawerNav from './src/component/Drawer/DrawerNav'
 
 const Stack = createStackNavigator();
 
@@ -17,8 +18,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="Activity" component={Activity} />
-        <Stack.Screen name="ReadData" component={ReadData} />
+        <Stack.Screen name="DrawerNav" component={DrawerNav} />
       </Stack.Navigator>
     </NavigationContainer>
 
