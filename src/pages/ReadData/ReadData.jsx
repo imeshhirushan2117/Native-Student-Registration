@@ -9,7 +9,8 @@ export default function ReadData() {
     const [data, setData] = useState([])
     const [visible, setVisible] = useState(false);
     const [id, setId] = useState('');
-
+    const [object,setObject] = useState('')
+    
     useEffect(() => {
         getData()
     }, [])
@@ -41,9 +42,8 @@ export default function ReadData() {
             })
     }
 
-    const update = (id) => {
-        setId(id);
-        console.log("id hurtto : "+id);
+    const update = (val) => {
+        setObject(val)
         setVisible(true)
     }
 
@@ -66,8 +66,10 @@ export default function ReadData() {
         <PaperProvider>
         <DialogBox 
         id={id}
+        object={object}
         visible={visible} 
         hideDialog={()=>{setVisible(false)}} 
+     
         />
         <View>
             <FlatList
@@ -79,7 +81,7 @@ export default function ReadData() {
                         address={item.address}
                         contact={item.contact}
                         onPressDeleted={() => deleted(item.id)}
-                        onPressUpdate={() => update(item.id)}
+                        onPressUpdate={() => update(item)}
                     />
                 )}
             />    

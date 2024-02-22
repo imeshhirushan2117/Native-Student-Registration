@@ -7,16 +7,25 @@ import { useState,useEffect } from 'react';
 import instance from '../../services/Axious';
 
 
-export default function DialogBox({ visible = false, hideDialog ,id}) {
+export default function DialogBox({ visible = false, hideDialog ,object}) {
 
-    const [name, setName] = useState("");
-    const [age, setAge] = useState("");
-    const [address, setAddress] = useState("");
-    const [contact, setContact] = useState("");
+    console.log(object.age);
+    const [name, setName] = useState('');
+    const [age, setAge] = useState('');
+    const [address, setAddress] = useState('');
+    const [contact, setContact] = useState('');
+
+    useEffect(()=> {
+        setName(object?.name)
+        setAge(object?.age)
+        setAddress(object?.address)
+        setContact(object?.contact)
+    },[object])
 
     const updateData = () => {
-        console.log("diolog id : " + id);
-        console.log(name,age,address,contact);
+        console.log("diolog id : " + object.id);
+        
+         console.log(name,age,address,contact);
     }
 
     return (
@@ -32,8 +41,8 @@ export default function DialogBox({ visible = false, hideDialog ,id}) {
                     />
 
                     <KeyboardInput
-                      value={age}
-                     onChangeText={(value) => setAge(value)}
+                         value={age ? age.toString() : ""} 
+                        onChangeText={(value) => setAge(value)}
                         label={"Age"}
                         style={{ marginBottom: 10 }}
                     />
@@ -64,7 +73,6 @@ export default function DialogBox({ visible = false, hideDialog ,id}) {
                         textColor={'white'}
                         rippleColor={"#B1DFD6"}
                         onPress={updateData}
-                        //  onPress={() => updateData(id)}
                         style={styles.btn}
                     />
 
