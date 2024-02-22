@@ -8,6 +8,7 @@ export default function ReadData() {
 
     const [data, setData] = useState([])
     const [visible, setVisible] = useState(false);
+    const [id, setId] = useState('');
 
     useEffect(() => {
         getData()
@@ -40,7 +41,9 @@ export default function ReadData() {
             })
     }
 
-    const update = () => {
+    const update = (id) => {
+        setId(id);
+        console.log("id hurtto : "+id);
         setVisible(true)
     }
 
@@ -62,6 +65,7 @@ export default function ReadData() {
     return (
         <PaperProvider>
         <DialogBox 
+        id={id}
         visible={visible} 
         hideDialog={()=>{setVisible(false)}} 
         />
@@ -75,7 +79,7 @@ export default function ReadData() {
                         address={item.address}
                         contact={item.contact}
                         onPressDeleted={() => deleted(item.id)}
-                        onPressUpdate={update}
+                        onPressUpdate={() => update(item.id)}
                     />
                 )}
             />    

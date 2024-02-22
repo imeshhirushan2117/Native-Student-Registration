@@ -7,7 +7,7 @@ import { useState,useEffect } from 'react';
 import instance from '../../services/Axious';
 
 
-export default function DialogBox({ visible = false, hideDialog }) {
+export default function DialogBox({ visible = false, hideDialog ,id}) {
 
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
@@ -15,6 +15,7 @@ export default function DialogBox({ visible = false, hideDialog }) {
     const [contact, setContact] = useState("");
 
     const updateData = () => {
+        console.log("diolog id : " + id);
         console.log(name,age,address,contact);
     }
 
@@ -28,8 +29,6 @@ export default function DialogBox({ visible = false, hideDialog }) {
                         onChangeText={(value) => setName(value)}
                         label={"Name"}
                         style={{ marginBottom: 10 }}
-
-
                     />
 
                     <KeyboardInput
