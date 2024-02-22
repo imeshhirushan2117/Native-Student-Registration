@@ -9,7 +9,7 @@ import instance from '../../services/Axious';
 
 export default function DialogBox({ visible = false, hideDialog, object,changeData}) {
 
-    const [name, setName] = useState("");
+    const [name, setName] = useState('');
     const [age, setAge] = useState('');
     const [address, setAddress] = useState('');
     const [contact, setContact] = useState('');

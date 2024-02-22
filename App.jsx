@@ -10,45 +10,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 export default function App() {
-
   const Stack = createStackNavigator();
-
-  // const [login, setLogin] = useState(false)
-
-  // useEffect(() => {
-  //   getData()
-  // }, [])
-
-  // const getData = async () => {
-  //   try {
-  //     const token = await AsyncStorage.getItem('my-key');
-  //     if (token !== null) {
-  //       setLogin(true)
-  //     }
-  //   } catch (e) {
-  //     setLogin(false)
-  //   }
-  // };
-
-
   return (
-    
-  //   <NavigationContainer>
-  //   <Stack.Navigator>
-  //     {login ? (
-  //       <>
-  //         <Stack.Screen name="Activity" component={Activity} />
-  //         <Stack.Screen name="ReadData" component={ReadData} />
-  //       </>
-  //     ) : (
-  //       <>
-  //        <Stack.Screen name="Login" component={Login} />
-  //         <Stack.Screen name="Register" component={Register} />
-  //       </>
-  //     )}
-  //   </Stack.Navigator>
-  // </NavigationContainer>
-
     <NavigationContainer>
       <Stack.Navigator>
       {/* <Stack.Screen name="Login" component={Login} /> */}
@@ -57,7 +20,6 @@ export default function App() {
       <Stack.Screen name="ReadData" component={ReadData} />
     </Stack.Navigator>
     </NavigationContainer>
-
 
     // <Register/>
     //  <Activity/>
