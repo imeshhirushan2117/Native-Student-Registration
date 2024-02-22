@@ -51,9 +51,9 @@ export default function App() {
 
     <NavigationContainer>
       <Stack.Navigator>
-      {/* <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="Activity" component={Activity} /> */}
+      {/* <Stack.Screen name="Login" component={Login} /> */}
+      {/* <Stack.Screen name="Register" component={Register} /> */}
+      {/* <Stack.Screen name="Activity" component={Activity} /> */}
       <Stack.Screen name="ReadData" component={ReadData} />
     </Stack.Navigator>
     </NavigationContainer>

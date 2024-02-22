@@ -3,29 +3,44 @@ import { StyleSheet, View } from 'react-native';
 import { Button, Dialog, Portal, PaperProvider, Text } from 'react-native-paper';
 import KeyboardInput from '../../common/KeyboardInput/KeyboardInput';
 import MyButton from '../../common/Button/Button';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import instance from '../../services/Axious';
 
 
-export default function DialogBox({ visible = false, hideDialog ,object}) {
+export default function DialogBox({ visible = false, hideDialog, object,changeData}) {
 
-    console.log(object.age);
-    const [name, setName] = useState('');
+    const [name, setName] = useState("");
     const [age, setAge] = useState('');
     const [address, setAddress] = useState('');
     const [contact, setContact] = useState('');
 
-    useEffect(()=> {
+    useEffect(() => {
         setName(object?.name)
         setAge(object?.age)
         setAddress(object?.address)
         setContact(object?.contact)
-    },[object])
+    }, [object])
 
     const updateData = () => {
-        console.log("diolog id : " + object.id);
-        
-         console.log(name,age,address,contact);
+        instance.put('/student/update/' + object.id, {
+            student_name: name,
+            student_age: age,
+            student_address: address,
+            student_contact: contact
+        })
+            .then((response) => {
+                console.log("Save Seccuss !");
+                changeData()
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(response);
+                console.log("Un Save Seccuss !");
+            });
+    }
+
+    const temp = () => {
+        console.log("temp")
     }
 
     return (
@@ -35,28 +50,29 @@ export default function DialogBox({ visible = false, hideDialog ,object}) {
                 <View style={{ padding: 20 }}>
                     <KeyboardInput
                         value={name}
-                        onChangeText={(value) => setName(value)}
+                         onChangeText={(value) => setName(value)}
+                        // onChangeText={temp}
                         label={"Name"}
                         style={{ marginBottom: 10 }}
                     />
 
                     <KeyboardInput
-                         value={age ? age.toString() : ""} 
+                        value={age ? age.toString() : ""}
                         onChangeText={(value) => setAge(value)}
                         label={"Age"}
                         style={{ marginBottom: 10 }}
                     />
 
                     <KeyboardInput
-                     value={address}
-                     onChangeText={(value) => setAddress(value)}
+                        value={address}
+                        onChangeText={(value) => setAddress(value)}
                         label={"Address"}
                         style={{ marginBottom: 10 }}
                     />
 
                     <KeyboardInput
-                     value={contact}
-                     onChangeText={(value) => setContact(value)}
+                        value={contact}
+                        onChangeText={(value) => setContact(value)}
                         label={"Contact"}
                         style={{ marginBottom: 10 }}
 

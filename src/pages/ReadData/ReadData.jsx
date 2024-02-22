@@ -47,6 +47,11 @@ export default function ReadData() {
         setVisible(true)
     }
 
+    const changeData = () => {
+        getData()
+        setVisible(false)
+    }
+
     const deleted = (id) => {
         console.log(id);
         instance.delete('/student/delete/'+ id)
@@ -69,6 +74,7 @@ export default function ReadData() {
         object={object}
         visible={visible} 
         hideDialog={()=>{setVisible(false)}} 
+        changeData={changeData}
      
         />
         <View>
