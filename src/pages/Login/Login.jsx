@@ -1,4 +1,4 @@
-import { View, StyleSheet,ScrollView } from 'react-native'
+import { View, StyleSheet, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import { Image } from 'react-native';
 import user_icon from '../../assets/icons/user.png';
@@ -7,8 +7,9 @@ import { Text } from 'react-native-paper';
 import MyButton from '../../common/Button/Button';
 import instance from '../../services/Axious';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ALERT_TYPE, Dialog, AlertNotificationRoot, Toast } from 'react-native-alert-notification';
 
-export default function LoginPage({navigation}) {
+export default function LoginPage({ navigation }) {
 
   const [email, setEmail] = useState("imesh@gmail.com");
   const [password, setPassword] = useState("12345");
@@ -17,15 +18,26 @@ export default function LoginPage({navigation}) {
     instance.post('/login', {
       email: email,
       password: password,
-  })
-      .then(function  (response) {
+    })
+      .then(function (response) {
         storeData(response)
-          console.log("LogIn Seccess");
-          
+        console.log("LogIn Seccess");
+        Dialog.show({
+          type: ALERT_TYPE.SUCCESS,
+          title: 'Success',
+          textBody: 'Login Seccess!',
+          button: 'close',
+        })
       })
       .catch(function (error) {
-          console.log(error);
-          // console.log("LogIn Un Seccess");
+        console.log(error);
+        // console.log("LogIn Un Seccess");
+        Dialog.show({
+          type: ALERT_TYPE.DANGER,
+          title: 'Warning',
+          textBody: 'Login Un Seccess! Try Again...',
+          button: 'close',
+        })
       });
   }
 
@@ -37,63 +49,68 @@ export default function LoginPage({navigation}) {
     } catch (e) {
     }
   };
-  
+
   const register = () => {
     navigation.navigate('Register')
   }
 
   return (
-<ScrollView>
-<View style={styles.mainView}>
-      <View>
-        <Text style={styles.text} variant="headlineSmall">User Login!</Text>
+    <ScrollView>
+      <View style={styles.mainView}>
+        <View>
+          <Text style={styles.text} variant="headlineSmall">User Login!</Text>
+        </View>
+        <View style={styles.view}>
+          <Image style={styles.img} source={user_icon} />
+        </View>
+
+        <View style={styles.input} >
+          <KeyboardInput
+            value={email}
+            onChangeText={(value) => setEmail(value)}
+            style={{ marginBottom: 20 }}
+            label={"Email"}
+          />
+
+          <KeyboardInput
+            value={password}
+            onChangeText={(value) => setPassword(value)}
+            label={"Password"}
+            secureTextEntry
+          />
+
+        </View>
+
+        <View style={styles.btn}>
+
+          <AlertNotificationRoot>
+
+            <MyButton
+              style={styles.myBtn}
+              text={"LogIn"}
+              textColor={"black"}
+              buttonColor={"#1F87C7"}
+              rippleColor={"white"}
+              onPress={logIn}
+              title={'dialog box'}
+            />
+          </AlertNotificationRoot>
+
+
+
+          <MyButton
+            style={styles.myBtn}
+            text={"Regiseter"}
+            textColor={"black"}
+            buttonColor={"#16a085"}
+            rippleColor={"white"}
+            onPress={register}
+          />
+        </View>
       </View>
-      <View style={styles.view}>
-        <Image style={styles.img} source={user_icon} />
-      </View>
-
-      <View style={styles.input} >
-        <KeyboardInput 
-        value={email} 
-        onChangeText={(value) => setEmail(value) } 
-        style={{ marginBottom: 20 }} 
-        label={"Email"} 
-        />
-
-        <KeyboardInput 
-        value={password} 
-        onChangeText={(value) => setPassword(value) } 
-        label={"Password"} 
-        secureTextEntry
-        />
-
-      </View>
-
-      <View style={styles.btn}>
-        <MyButton
-          style={styles.myBtn}
-          text={"LogIn"}
-          textColor={"black"}
-          buttonColor={"#1F87C7"}
-          rippleColor={"white"}
-          onPress={logIn}
-
-        />
+    </ScrollView>
 
 
-        <MyButton
-          style={styles.myBtn}
-          text={"Regiseter"}
-          textColor={"black"}
-          buttonColor={"#16a085"}
-          rippleColor={"white"}
-          onPress={register}
-        />
-      </View>
-    </View>
-</ScrollView>
-
-   
   )
 }
 
