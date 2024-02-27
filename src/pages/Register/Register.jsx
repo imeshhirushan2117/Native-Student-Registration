@@ -109,7 +109,7 @@ export default function Register({ navigation }) {
                             buttonColor={"#f39c12"}
                             rippleColor={"white"}
                             onPress={clear}
-                            title={'dialog box'}
+
                         />
                     </AlertNotificationRoot>
                     {/* <MyButton

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'react-native-paper';
 
-export default function MyButton({text,onPress,buttonColor ,textColor,style,rippleColor,title}) {
+export default function MyButton({text,onPress,buttonColor ,textColor,style,rippleColor}) {
   return (
     <Button mode="contained-tonal" 
     onPress={onPress} 
@@ -9,7 +9,7 @@ export default function MyButton({text,onPress,buttonColor ,textColor,style,ripp
     textColor={textColor}
     style={style}
     rippleColor={rippleColor}
-    title = {title}
+    title={'dialog box'}
     >
     {text}
   </Button>

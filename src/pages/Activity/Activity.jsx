@@ -5,8 +5,9 @@ import KeyboardInput from '../../common/KeyboardInput/KeyboardInput';
 import MyButton from '../../common/Button/Button';
 import { Text } from 'react-native-paper';
 import instance from '../../services/Axious';
+import { ALERT_TYPE, Dialog, AlertNotificationRoot, Toast } from 'react-native-alert-notification';
 
-export default function Activity({navigation}) {
+export default function Activity({ navigation }) {
 
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
@@ -19,16 +20,29 @@ export default function Activity({navigation}) {
             student_age: age,
             student_address: address,
             student_contact: contact
-          })
-          .then(function (response) {
-            console.log(response);
-            console.log("Save Seccuss !");
-            clear()
-          })
-          .catch(function (error) {
-            console.log(error);
-            console.log("Save UnSeccuss !");
-          });
+        })
+            .then(function (response) {
+                console.log(response);
+                // console.log("Save Seccuss !");
+                Dialog.show({
+                    type: ALERT_TYPE.SUCCESS,
+                    title: 'Success',
+                    textBody: 'Student Save Seccess!',
+                    button: 'close',
+                })
+
+                clear()
+            })
+            .catch(function (error) {
+                console.log(error);
+                // console.log("Save UnSeccuss !");
+                Dialog.show({
+                    type: ALERT_TYPE.DANGER,
+                    title: 'Warning',
+                    textBody: 'Student Save Un Seccess! Try Again...',
+                    button: 'close',
+                })
+            });
     }
 
     // const read = () => {
@@ -83,31 +97,32 @@ export default function Activity({navigation}) {
                 </View>
 
                 <View style={{ flex: 2, marginTop: 15, flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <AlertNotificationRoot>
+                        <MyButton
+                            text={"Save"}
+                            buttonColor={'#2980b9'}
+                            textColor={'white'}
+                            rippleColor={"#B7D4E7"}
+                            onPress={save}
+                            style={{borderRadius: 8,width: "90%"}}
+                        />
+                    </AlertNotificationRoot>
+
                     <MyButton
-                        text={"Save"}
-                        buttonColor={'#2980b9'}
-                        textColor={'white'}
-                        rippleColor={"#B7D4E7"}
-                        onPress={save}
-                        style={styles.btn}
-
-
-                    />
-                       <MyButton
                         text={"Clear"}
                         buttonColor={'#f39c12'}
                         textColor={'white'}
                         rippleColor={"#F7BD61"}
                         onPress={clear}
                         style={styles.btn}
-                    /> 
+                    />
 
-                  
+
                 </View>
 
                 <View style={{ flex: 2, marginTop: 15, flexDirection: 'row', justifyContent: 'space-between' }}>
-                   
-                {/* <MyButton
+
+                    {/* <MyButton
                         text={"Read"}
                         buttonColor={'#16a085'}
                         textColor={'white'}
@@ -129,7 +144,7 @@ const styles = StyleSheet.create({
 
     },
 
-    btn1 : {
+    btn1: {
         borderRadius: 8,
         width: "100%"
     },

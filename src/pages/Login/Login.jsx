@@ -92,7 +92,6 @@ export default function LoginPage({ navigation }) {
               buttonColor={"#1F87C7"}
               rippleColor={"white"}
               onPress={logIn}
-              title={'dialog box'}
             />
           </AlertNotificationRoot>
 
