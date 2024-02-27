@@ -4,16 +4,19 @@ import { Card, Text } from 'react-native-paper';
 import MyButton from '../../common/Button/Button'
 import DialogBox from '../DialogBox/DialogBox';
 import { PaperProvider } from 'react-native-paper'
-export default function CardComponent({onPressUpdate,onPressDeleted , name, age, address, contact }) {
+import { ALERT_TYPE, Dialog, AlertNotificationRoot, Toast } from 'react-native-alert-notification';
+
+
+export default function CardComponent({ onPressUpdate, onPressDeleted, name, age, address, contact }) {
 
     const [visible, setVisible] = React.useState(false);
 
     return (
         <View style={{ padding: 20, flex: 1 }}>
-            <Card style={{ padding: 15,backgroundColor:'#16a085' }}>
+            <Card style={{ padding: 15, backgroundColor: '#16a085' }}>
 
                 <View>
-                    <Text style={{ fontWeight:'bold', color:'#0a3d62' , marginBottom: 20, textAlign:'center'}} variant="headlineSmall">Student Card !</Text>
+                    <Text style={{ fontWeight: 'bold', color: '#0a3d62', marginBottom: 20, textAlign: 'center' }} variant="headlineSmall">Student Card !</Text>
                 </View>
 
                 <View>
@@ -23,7 +26,7 @@ export default function CardComponent({onPressUpdate,onPressDeleted , name, age,
                     <Text style={styles.txt} variant="bodyLarge">Contact : {contact}</Text>
                 </View>
 
-                <View style={{ marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
+                <View style={{ marginTop: 20, flexDirection: 'row', justifyContent: 'space-between', gap:20}}>
                     <MyButton
                         text={"Update"}
                         buttonColor={'#34495e'}
@@ -33,14 +36,17 @@ export default function CardComponent({onPressUpdate,onPressDeleted , name, age,
                         style={styles.btn}
                     />
 
-                    <MyButton
-                        text={"Deleted"}
-                        buttonColor={'#c0392b'}
-                        textColor={'white'}
-                        rippleColor={"#D57B71"}
-                        onPress={onPressDeleted}
-                        style={styles.btn}
-                    />
+                    <AlertNotificationRoot>
+                        <MyButton
+                            text={"Deleted"}
+                            buttonColor={'#c0392b'}
+                            textColor={'white'}
+                            rippleColor={"#D57B71"}
+                            onPress={onPressDeleted}
+                            style={{borderRadius: 8,width: "100%"}}
+                        />
+
+                    </AlertNotificationRoot>
                 </View>
             </Card>
         </View>
@@ -56,6 +62,6 @@ const styles = StyleSheet.create({
     txt: {
         fontWeight: '900',
         paddingBottom: 5,
-        color:'black'
+        color: 'black'
     },
 })

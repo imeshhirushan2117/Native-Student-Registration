@@ -27,6 +27,7 @@ export default function LoginPage({ navigation }) {
           title: 'Success',
           textBody: 'Login Seccess!',
           button: 'close',
+          // autoClose:1000000,
         })
       })
       .catch(function (error) {
@@ -37,6 +38,7 @@ export default function LoginPage({ navigation }) {
           title: 'Warning',
           textBody: 'Login Un Seccess! Try Again...',
           button: 'close',
+          autoClose:1000000,
         })
       });
   }

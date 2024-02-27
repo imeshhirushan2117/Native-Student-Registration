@@ -4,6 +4,8 @@ import Card from '../../component/Card/Card'
 import instance from '../../services/Axious'
 import DialogBox from '../../component/DialogBox/DialogBox'
 import { Button, PaperProvider } from 'react-native-paper'
+import { ALERT_TYPE, Dialog, AlertNotificationRoot, Toast } from 'react-native-alert-notification';
+
 export default function ReadData() {
 
     const [data, setData] = useState([])
@@ -58,11 +60,27 @@ export default function ReadData() {
         .then(response => {
             // console.log(response)
             getData()
-          console.log('Deleted Successes');
+        //   console.log('Deleted Successes');
+        Dialog.show({
+            type: ALERT_TYPE.SUCCESS,
+            title: 'Success',
+            textBody: 'Student Deleted Seccess!',
+            button: 'Ok',
+            autoClose:1000000,
+        })
+
         })
         .catch(error => {
           console.error(error);
-          console.log('Deleted Un Successes');
+        //   console.log('Deleted Un Successes');
+        Dialog.show({
+            type: ALERT_TYPE.DANGER,
+            title: 'Warning',
+            textBody: 'Student Deleted Un Seccess!',
+            button: 'Try Again...',
+            autoClose:1000000,
+        })
+
         });
 
         console.log("deletedData");

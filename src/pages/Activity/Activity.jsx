@@ -28,7 +28,8 @@ export default function Activity({ navigation }) {
                     type: ALERT_TYPE.SUCCESS,
                     title: 'Success',
                     textBody: 'Student Save Seccess!',
-                    button: 'close',
+                    button: 'Ok',
+                    autoClose:1000000,
                 })
 
                 clear()
@@ -39,8 +40,9 @@ export default function Activity({ navigation }) {
                 Dialog.show({
                     type: ALERT_TYPE.DANGER,
                     title: 'Warning',
-                    textBody: 'Student Save Un Seccess! Try Again...',
-                    button: 'close',
+                    textBody: 'Student Save Un Seccess!',
+                    button: 'Try Again...',
+                    autoClose:1000000,
                 })
             });
     }

@@ -28,10 +28,10 @@ export default function Register({ navigation }) {
                     type: ALERT_TYPE.SUCCESS,
                     title: 'Success',
                     textBody: 'User Register Seccess!',
-                    button: 'close',
+                    button: 'Ok',
+                    autoClose:1000000,
                 })
-                
-                navigation.navigate('Login')
+                // navigation.navigate('Login')
                 clear()
             })
             .catch(function (error) {
@@ -40,8 +40,9 @@ export default function Register({ navigation }) {
                 Dialog.show({
                     type: ALERT_TYPE.DANGER,
                     title: 'Warning',
-                    textBody: 'User Register Un Seccess! Try Again...',
-                    button: 'close',
+                    textBody: 'User Register Un Seccess!',
+                    button: 'Try Again...',
+                    autoClose:1000000,
                 })
             });
     }
