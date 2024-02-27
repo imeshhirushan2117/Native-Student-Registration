@@ -6,9 +6,9 @@ import KeyboardInput from '../../common/KeyboardInput/KeyboardInput';
 import { Text } from 'react-native-paper';
 import MyButton from '../../common/Button/Button';
 import instance from '../../services/Axious';
+import { ALERT_TYPE, Dialog, AlertNotificationRoot, Toast } from 'react-native-alert-notification';
 
-
-export default function Register({navigation}) {
+export default function Register({ navigation }) {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -23,13 +23,26 @@ export default function Register({navigation}) {
         })
             .then(function (response) {
                 console.log(response.data);
-                console.log("Register Seccess!");
+                // console.log("Register Seccess!");
+                Dialog.show({
+                    type: ALERT_TYPE.SUCCESS,
+                    title: 'Success',
+                    textBody: 'User Register Seccess!',
+                    button: 'close',
+                })
+                
                 navigation.navigate('Login')
                 clear()
             })
             .catch(function (error) {
                 console.log(error);
-                console.log("Register Un Seccess!");
+                // console.log("Register Un Seccess!");
+                Dialog.show({
+                    type: ALERT_TYPE.DANGER,
+                    title: 'Warning',
+                    textBody: 'User Register Un Seccess! Try Again...',
+                    button: 'close',
+                })
             });
     }
 
@@ -45,60 +58,61 @@ export default function Register({navigation}) {
 
     return (
         <ScrollView>
-                    <View style={styles.mainView}>
-            <View>
-                <Text style={styles.text} variant="headlineSmall">User Registation!</Text>
-            </View>
-            <View style={styles.view}>
-                <Image style={styles.img} source={register_icon} />
-            </View>
+            <View style={styles.mainView}>
+                <View>
+                    <Text style={styles.text} variant="headlineSmall">User Registation!</Text>
+                </View>
+                <View style={styles.view}>
+                    <Image style={styles.img} source={register_icon} />
+                </View>
 
-            <View style={styles.input} >
+                <View style={styles.input} >
 
-                <KeyboardInput
-                    value={name}
-                    onChangeText={(value) => setName(value)}
-                    style={{ marginBottom: 20 }}
-                    label={"User Name"}
-                />
-                <KeyboardInput
-                    value={email}
-                    onChangeText={(value) => setEmail(value)}
-                    style={{ marginBottom: 20 }}
-                    label={"Email"}
-                />
+                    <KeyboardInput
+                        value={name}
+                        onChangeText={(value) => setName(value)}
+                        style={{ marginBottom: 20 }}
+                        label={"User Name"}
+                    />
+                    <KeyboardInput
+                        value={email}
+                        onChangeText={(value) => setEmail(value)}
+                        style={{ marginBottom: 20 }}
+                        label={"Email"}
+                    />
 
-                <KeyboardInput
-                    value={password}
-                    onChangeText={(value) => setPassword(value)}
-                    label={"Password"}
-                    secureTextEntry
-                />
+                    <KeyboardInput
+                        value={password}
+                        onChangeText={(value) => setPassword(value)}
+                        label={"Password"}
+                        secureTextEntry
+                    />
 
-            </View>
+                </View>
 
-            <View style={styles.btn}>
-                <MyButton
-                    style={styles.myBtn}
-                    text={"Register"}
-                    textColor={"black"}
-                    buttonColor={"#1F87C7"}
-                    rippleColor={"white"}
-                    onPress={register}
-        
-                />
+                <View style={styles.btn}>
+                    <MyButton
+                        style={styles.myBtn}
+                        text={"Register"}
+                        textColor={"black"}
+                        buttonColor={"#1F87C7"}
+                        rippleColor={"white"}
+                        onPress={register}
 
+                    />
 
-                <MyButton
-                    style={styles.myBtn}
-                    text={"Clear"}
-                    textColor={"black"}
-                    buttonColor={"#f39c12"}
-                    rippleColor={"white"}
-                    onPress={clear}
-                />
-
-                {/* <MyButton
+                    <AlertNotificationRoot>
+                        <MyButton
+                            style={styles.myBtn}
+                            text={"Clear"}
+                            textColor={"black"}
+                            buttonColor={"#f39c12"}
+                            rippleColor={"white"}
+                            onPress={clear}
+                            title={'dialog box'}
+                        />
+                    </AlertNotificationRoot>
+                    {/* <MyButton
                     style={styles.myBtn}
                     text={"Back"}
                     textColor={"white"}
@@ -106,9 +120,9 @@ export default function Register({navigation}) {
                     rippleColor={"white"}
                     onPress={back}
                 /> */}
-               
+
+                </View>
             </View>
-        </View>
         </ScrollView>
 
     )
