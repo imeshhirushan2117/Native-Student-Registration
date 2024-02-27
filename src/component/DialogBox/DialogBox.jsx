@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View , Alert } from 'react-native';
 import { Button, Dialog, Portal, PaperProvider, Text } from 'react-native-paper';
 import KeyboardInput from '../../common/KeyboardInput/KeyboardInput';
 import MyButton from '../../common/Button/Button';
 import { useState, useEffect } from 'react';
 import instance from '../../services/Axious';
 
-
-export default function DialogBox({ visible = false, hideDialog, object,changeData}) {
+export default function DialogBox({ visible = false, hideDialog, object, changeData }) {
 
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
@@ -29,13 +28,15 @@ export default function DialogBox({ visible = false, hideDialog, object,changeDa
             student_contact: contact
         })
             .then((response) => {
-                console.log("Save Seccuss !");
+                // console.log("Save Seccuss !");
+                Alert.alert('Update Seccuss !')
                 changeData()
                 console.log(response);
             })
             .catch((error) => {
                 console.log(response);
-                console.log("Un Save Seccuss !");
+                // console.log("Un Save Seccuss !");
+                Alert.alert('Update Un Seccuss !')
             });
     }
 
@@ -48,9 +49,11 @@ export default function DialogBox({ visible = false, hideDialog, object,changeDa
             <Dialog visible={visible} onDismiss={hideDialog}>
                 <Dialog.Title>Update Student !</Dialog.Title>
                 <View style={{ padding: 20 }}>
+
+
                     <KeyboardInput
                         value={name}
-                         onChangeText={(value) => setName(value)}
+                        onChangeText={(value) => setName(value)}
                         // onChangeText={temp}
                         label={"Name"}
                         style={{ marginBottom: 10 }}
@@ -80,27 +83,25 @@ export default function DialogBox({ visible = false, hideDialog, object,changeDa
 
                 </View>
 
+                    <View style={{ padding: 20 }}>
+                        <MyButton
+                            text={"Update"}
+                            buttonColor={'#16a085'}
+                            textColor={'white'}
+                            rippleColor={"#B1DFD6"}
+                            onPress={updateData}
+                            style={styles.btn}
+                        />
 
-
-                <View style={{ padding: 20 }}>
-                    <MyButton
-                        text={"Update"}
-                        buttonColor={'#16a085'}
-                        textColor={'white'}
-                        rippleColor={"#B1DFD6"}
-                        onPress={updateData}
-                        style={styles.btn}
-                    />
-
-                    <MyButton
-                        text={"Cansel"}
-                        buttonColor={'#c0392b'}
-                        textColor={'white'}
-                        rippleColor={"#EABDB8"}
-                        onPress={hideDialog}
-                        style={styles.btn}
-                    />
-                </View>
+                        <MyButton
+                            text={"Cansel"}
+                            buttonColor={'#c0392b'}
+                            textColor={'white'}
+                            rippleColor={"#EABDB8"}
+                            onPress={hideDialog}
+                            style={styles.btn}
+                        />
+                    </View>
             </Dialog>
         </Portal>
     );

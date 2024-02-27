@@ -73,7 +73,7 @@ export default function ReadData() {
         .catch(error => {
           console.error(error);
         //   console.log('Deleted Un Successes');
-        Dialog.show({
+            Dialog.show({
             type: ALERT_TYPE.DANGER,
             title: 'Warning',
             textBody: 'Student Deleted Un Seccess!',
