@@ -22,13 +22,13 @@ export default function LoginPage({ navigation }) {
       .then(function (response) {
         storeData(response)
         console.log("LogIn Seccess");
-        Dialog.show({
-          type: ALERT_TYPE.SUCCESS,
-          title: 'Success',
-          textBody: 'Login Seccess!',
-          button: 'close',
-          // autoClose:1000000,
-        })
+        // Dialog.show({
+        //   type: ALERT_TYPE.SUCCESS,
+        //   title: 'Success',
+        //   textBody: 'Login Seccess!',
+        //   button: 'close',
+        //   // autoClose:1000000,
+        // })
       })
       .catch(function (error) {
         console.log(error);
