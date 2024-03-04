@@ -31,7 +31,7 @@ export default function DialogBox({ visible = false, hideDialog, object, changeD
                 // console.log("Save Seccuss !");
                 Alert.alert('Update Seccuss !')
                 changeData()
-                console.log(response);
+                // console.log(response);
             })
             .catch((error) => {
                 console.log(response);

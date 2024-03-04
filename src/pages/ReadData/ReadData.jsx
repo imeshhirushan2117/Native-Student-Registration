@@ -93,7 +93,6 @@ export default function ReadData() {
         visible={visible} 
         hideDialog={()=>{setVisible(false)}} 
         changeData={changeData}
-     
         />
         <View>
             <FlatList
