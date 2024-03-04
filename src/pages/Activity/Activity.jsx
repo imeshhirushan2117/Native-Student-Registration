@@ -22,7 +22,7 @@ export default function Activity({ navigation }) {
             student_contact: contact
         })
             .then(function (response) {
-                console.log(response);
+                // console.log(response);
                 // console.log("Save Seccuss !");
                 Dialog.show({
                     type: ALERT_TYPE.SUCCESS,
